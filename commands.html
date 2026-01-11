@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oldtoons BON Giveaway</title>
+  
+  <style>
+    :root {
+      --transition: all 0.3s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f0f1a;
+      --card: #161b2e;
+      --text: #e0e0ff;
+      --text-muted: #8888aa;
+      --accent: #fb4f4f;
+      --accent-dark: #c93d3d;
+      --border: #2a3349;
+      --shadow: 0 4px 15px rgba(0,0,0,0.35);
+	  --k3v: #15b097;
+	  --jhonny: #00abff;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5fa;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #5a5a7a;
+      --accent: #d32f2f;
+      --accent-dark: #b71c1c;
+      --border: #d0d0e0;
+      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+	  --k3v: #15b097;
+	  --jhonny: #00abff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+      transition: var(--transition);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      text-shadow: 0 0 15px rgba(251, 79, 79, 0.3);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(251,79,79,0.15);
+      transform: scale(1.15);
+    }
+
+    details {
+      margin-bottom: 1.2rem;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    summary {
+      padding: 1.1rem 1.4rem;
+      background: linear-gradient(135deg, rgba(251,79,79,0.08), rgba(0,0,0,0.1));
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: var(--text);
+      transition: var(--transition);
+    }
+
+    .section-content {
+      padding: 1.4rem 1.8rem;
+    }
+
+    .command {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .cmd-name {
+      color: var(--accent);
+      font-family: 'Consolas', monospace;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      background: rgba(251,79,79,0.12);
+      border-radius: 6px;
+      border: 1px solid rgba(251,79,79,0.25);
+      text-align: left;
+    }
+
+    .description {
+      padding-top: 0.35rem;
+      color: var(--text);
+    }
+	
+	.k3v {
+      color: var(--k3v);
+	}
+	
+	.jhonny {
+      color: var(--jhonny);
+	}	
+
+    @media (max-width: 680px) {
+      .command {
+        grid-template-columns: 1fr;
+      }
+      .cmd-name {
+        text-align: left;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div>
+      <h1>Giveaway Bot Commands</h1>
+      <p style="color:var(--text-muted)">OldToons.world • Oldtoons BON Giveaway</p>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+  </header>
+
+<details open>
+    <summary>USER Commands</summary>
+    <div class="section-content">
+
+      <div class="command">
+        <div class="cmd-name">!help</div>
+        <div class="description">Displays help info for all available commands.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!bon</div>
+        <div class="description">Displays the current prize amount for the ongoing giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!range</div>
+        <div class="description">Displays the valid number range for current giveaways.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!time</div>
+        <div class="description">Displays the time left until the giveaway ends.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!number</div>
+        <div class="description">Submit a number guess for number-based giveaways.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!taken</div>
+        <div class="description">Shows the list of currently taken numbers.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!free</div>
+        <div class="description">Shows currently available (free) numbers — if enabled.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!random</div>
+        <div class="description">Generates a random number within range (if enabled).</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!change #</div>
+        <div class="description">Change your random number once (only for !random entries).</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!lucky</div>
+        <div class="description">Displays the current lucky number (if enabled).</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!entries</div>
+        <div class="description">Shows how many entries you or others have made.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!stats</div>
+        <div class="description">Current giveaway statistics overview.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!leave</div>
+        <div class="description">Leave the current giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!sponsors</div>
+        <div class="description">Shows all current sponsors and their BON contributions.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!spots</div>
+        <div class="description">Shows how many spots are still available.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!leaderboard</div>
+        <div class="description">Top winners leaderboard.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!mystats</div>
+        <div class="description">Your personal entries/wins/losses statistics.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!myrank</div>
+        <div class="description">Show your current position on the leaderboard.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!history</div>
+        <div class="description">Show recent giveaway results.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!lastwinner</div>
+        <div class="description">Information about the last giveaway winner(s).</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!banlist</div>
+        <div class="description">Show list of currently banned users.</div>
+      </div>
+
+    </div>
+  </details>
+
+  <details>
+    <summary>HOST Commands</summary>
+    <div class="section-content">
+
+      <div class="command">
+        <div class="cmd-name">!addbon #</div>
+        <div class="description">Add BON to the prize pool.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!removebon #</div>
+        <div class="description">Remove BON from the prize pool.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!addtime #</div>
+        <div class="description">Add time to the giveaway (in minutes).</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!removetime #</div>
+        <div class="description">Remove time from the giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!reminder</div>
+        <div class="description">Displays current giveaway information.</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!summon (@user)</div>
+        <div class="description">Summon user to ChatBox (Send PM)</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!kick (@user)</div>
+        <div class="description">Kick a user from the current giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!ban (@user)</div>
+        <div class="description">Permanently ban user from giveaways.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!unban (@user)</div>
+        <div class="description">Remove ban from a user.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">rig (@user)</div>
+        <div class="description">(For testing) Simulates a rigged outcome (host/debug use).</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">unrig</div>
+        <div class="description">(For testing) Restores fairness after a rigged outcome.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!winners #</div>
+        <div class="description">Change number of winners for the giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!exportstats</div>
+        <div class="description">Export the entire leaderboard & stats.</div>
+      </div>	  
+
+      <div class="command">
+        <div class="cmd-name">!resetstats</div>
+        <div class="description">Reset the entire leaderboard & stats.</div>
+      </div>	  
+	  
+      <div class="command">
+        <div class="cmd-name">!pause</div>
+        <div class="description">Pause the giveaway timer.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!resume</div>
+        <div class="description">Resume a paused giveaway.</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!end</div>
+        <div class="description">Force end the giveaway.</div>
+      </div>
+
+    </div>
+  </details>
+
+  <details>
+    <summary>Action Commands</summary>
+    <div class="section-content">
+
+      <div class="command">
+        <div class="cmd-name">!me (action)</div>
+        <div class="description">Example: !me goes for a nap</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!slap (@user)</div>
+        <div class="description">Example: !slap <span class="jhonny">Jhonny</span></div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!punch (@user)</div>
+        <div class="description">Example: !punch <span class="jhonny">Jhonny</span></div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!hug (@user)</div>
+        <div class="description">Example: !hug <span class="jhonny">Jhonny</span></div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!kiss (@user)</div>
+        <div class="description">Example: !kiss <span class="jhonny">Jhonny</span></div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!highfive (@user)</div>
+        <div class="description">Example: !highfive | !highfive <span class="jhonny">Jhonny</span></div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!birthday (@user)</div>
+        <div class="description">Example: !birthday | !birthday <span class="jhonny">Jhonny</span></div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!shoutout (@user)</div>
+        <div class="description">Example: !shoutout <span class="jhonny">Jhonny</span></div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!lurk</div>
+        <div class="description"><span class="k3v">K3V</span> slips into lurk mode... 🥷🏻</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!unlurk</div>
+        <div class="description"><span class="k3v">K3V</span> returns from the shadows! 🧖‍♂️</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!dance</div>
+        <div class="description"><span class="k3v">K3V</span> breaks into a wild victory dance! 🕺💃</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!cry</div>
+        <div class="description"><span class="k3v">K3V</span> bursts into tears... 😭</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!fpalm</div>
+        <div class="description"><span class="k3v">K3V</span> has no words for this... 🤦🏽‍♂️</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!vanish</div>
+        <div class="description"><span class="k3v">K3V</span> vanishes in a puff of smoke.️ 😶‍🌫️</div>
+      </div>
+	  
+    </div>
+  </details>	  
+	  
+  <details>
+    <summary>Fun Commands</summary>
+    <div class="section-content">	  
+
+	  <div class="command">
+		<span class="cmd-name">!otw</span>
+		<div class="description">
+		  <span class="emoji">💛</span>
+		  <span class="color-text" style="color:#A36D3B">O</span>
+		  <span class="color-text" style="color:#D87F2C">L</span>
+		  <span class="color-text" style="color:#E37717">D</span>
+		  <span class="color-text" style="color:#D36809">T</span>
+		  <span class="color-text" style="color:#D16303">O</span>
+		  <span class="color-text" style="color:#CD6E43">O</span>
+		  <span class="color-text" style="color:#D0542C">N</span>
+		  <span class="color-text" style="color:#C42C00">S</span>
+		  <span class="emoji">🧡</span>
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!k3v</span>
+		<div class="description">
+		  💰 ALL YOUR <span style="color:#ffc00a; font-weight:bold">BON</span> 
+		  ARE BELONG TO 
+		  <a href="https://oldtoons.world/users/K3V" style="color:#DC3D1D; font-weight:bold">K3V</a>! 💰
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!ahoi</span>
+		<div class="description">
+		  That one time when 
+		  <a href="https://oldtoons.world/users/ahoimate" style="color:#15B097; font-weight:bold">Ahoimate</a> 
+		  cheated! 
+		  <a href="https://i.ibb.co/8DqPNqr8/Ahoi.png" style="color:#fb4f4f; font-weight:bold">PROOF</a> 👀
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!christmas</span>
+		<div class="description">
+		  <span class="emoji">🤶🏼</span>
+		  <span style="color:#ff0000">M</span>
+		  <span style="color:#ffffff">E</span>
+		  <span style="color:#ff0000">R</span>
+		  <span style="color:#ffffff">R</span>
+		  <span style="color:#ff0000">Y</span>
+		  <span style="color:#ffffff">C</span>
+		  <span style="color:#ff0000">H</span>
+		  <span style="color:#ffffff">R</span>
+		  <span style="color:#ff0000">I</span>
+		  <span style="color:#ffffff">S</span>
+		  <span style="color:#ff0000">T</span>
+		  <span style="color:#ffffff">M</span>
+		  <span style="color:#ff0000">A</span>
+		  <span style="color:#ffffff">S</span>
+		  <span class="emoji">🎅🏼</span>
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!halloween</span>
+		<div class="description">
+		  <span class="emoji">🎃</span>
+		  <span style="color:#ffa500">H</span>
+		  <span style="color:#008000">A</span>
+		  <span style="color:#ffa500">P</span>
+		  <span style="color:#008000">P</span>
+		  <span style="color:#ffa500">Y</span>
+		  <span style="color:#008000">H</span>
+		  <span style="color:#ffa500">A</span>
+		  <span style="color:#008000">L</span>
+		  <span style="color:#ffa500">L</span>
+		  <span style="color:#008000">O</span>
+		  <span style="color:#ffa500">W</span>
+		  <span style="color:#008000">E</span>
+		  <span style="color:#ffa500">E</span>
+		  <span style="color:#008000">N</span>
+		  <span class="emoji">👻</span>
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!easter</span>
+		<div class="description">
+		  <span class="emoji">🐰</span>
+		  <span style="color:#808080">H</span>
+		  <span style="color:#ffffff">A</span>
+		  <span style="color:#808080">P</span>
+		  <span style="color:#ffffff">P</span>
+		  <span style="color:#808080">Y</span>
+		  <span style="color:#ffffff">E</span>
+		  <span style="color:#808080">A</span>
+		  <span style="color:#ffffff">S</span>
+		  <span style="color:#808080">T</span>
+		  <span style="color:#ffffff">E</span>
+		  <span style="color:#808080">R</span>
+		  <span class="emoji">🥚</span>
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!happynewyear</span>
+		<div class="description">
+		  <span class="emoji">🎉</span>
+		  <span style="color:#FFD700; font-weight:bold">H A P P Y N E W Y E A R</span>
+		  <span class="emoji">✨</span>
+		</div>
+	  </div>
+
+	  <div class="command">
+		<span class="cmd-name">!valentine</span>
+		<div class="description">
+		  <span class="emoji">❤️</span>
+		  <span style="color:#FF1493; font-weight:bold">H A P P Y V A L E N T I N E ' S D A Y</span>
+		  <span class="emoji">🌹</span>
+		</div>
+	  </div>
+
+    </div>
+  </details>
+
+  <details>
+    <summary>Script Commands</summary>
+    <div class="section-content">
+
+      <div class="command">
+        <div class="cmd-name">!version</div>
+        <div class="description">Shows current script version & download link</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!changelog</div>
+        <div class="description">Latest changelog</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!new</div>
+        <div class="description">Latest feature</div>
+      </div>
+	  
+      <div class="command">
+        <div class="cmd-name">!message</div>
+        <div class="description">Custom message (if enabled)</div>
+      </div>
+
+      <div class="command">
+        <div class="cmd-name">!thx</div>
+        <div class="description">Thank you message (if enabled)</div>
+      </div>
+
+    </div>
+  </details>
+
+</div>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  // Get saved theme or prefer color scheme
+  function getPreferredTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update toggle icon
+    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+  }
+
+  // Initial setup
+  setTheme(getPreferredTheme());
+
+  // Toggle handler
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+  });
+
+  // Listen for system theme change
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {  // only if user hasn't set preference
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+</script>
+</body>
+</html>
